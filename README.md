@@ -1,3 +1,9 @@
+## Integrantes
+#### Andrey Jerez Rubio
+#### Alejandro Jimenez
+
+### Consultas sobre una tabla
+
 1
 
 ```sql
@@ -690,4 +696,21 @@ GROUP BY
 9. 
 ```sql
 SELECT
-    COUNT(c.codigo_cliente)
+    e.nombre,
+    COUNT(c.codigo_cliente) AS numero_clientes
+FROM
+    clientes c
+JOIN empleados e ON c.codigo_empleado_rep_ventas = e.codigo_empleado
+GROUP BY
+    e.nombre;
+```
+10. 
+```sql
+SELECT
+    COUNT(c.codigo_cliente) AS numero_clientes
+FROM
+    clientes c
+JOIN empleados e ON c.codigo_empleado_rep_ventas = e.codigo_empleado
+WHERE
+    c.codigo_empleado_rep_ventas = 0 OR c.codigo_empleado_rep_ventas = NULL;
+```
